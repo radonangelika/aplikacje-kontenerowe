@@ -14,26 +14,26 @@ Pobranie obrazu systemu Ubuntu w wersji 16.04 z DockerHub.
 ```bash
 docker pull ubuntu:16.04
 ```
-![ss-01](./ćwiczenie-2/ss-01.png)
+![ss-01](/ss-01.png)
 
 **Polecenie:**
 ```bash
 ping google.com
 ```
-![ss-02](./ćwiczenie-2/ss-02.png)
+![ss-02](ss-02.png)
 
 
 **Polecenie:**
 ```bash
 apt-get update
 ```
-![ss-03](./ćwiczenie-2/ss-03.png)
+![ss-03](ss-03.png)
 
 **Polecenie:**
 ```bash
 apt-get install iputils-ping
 ```
-![ss-04](./ćwiczenie-2/ss-04.png)
+![ss-04](ss-04.png)
 
 **Polecenie:**
 ```bash
@@ -47,6 +47,6 @@ docker commit d21a2ed274a9 radon/ping:lates
 ```bash
 docker images
 ```
-![ss-05](./ćwiczenie-2/ss-05.png)
+![ss-05](ss-05.png)
 
 
