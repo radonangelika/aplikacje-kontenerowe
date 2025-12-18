@@ -1,4 +1,4 @@
-# Exercise 1: Uruchamianie kontenerów
+# Ćwiczenie 1: Uruchamianie kontenerów
 
 W tym ćwiczeniu poznajemy podstawy pobierania obrazów, uruchamiania, zatrzymywania oraz usuwania kontenerów Docker.
 
