@@ -11,7 +11,7 @@ Aby uruchamiać kontenery, musimy najpierw pobrać obrazy.
 ### Sprawdzenie dostępnych obrazów lokalnie
 Sprawdzamy, jakie obrazy znajdują się aktualnie na naszej maszynie, używając polecenia `docker images`.
 
-![ss-01](ss-01.png)
+![ss-01](./ćwiczenie-1/ss-01.png)
 
 ---
 
