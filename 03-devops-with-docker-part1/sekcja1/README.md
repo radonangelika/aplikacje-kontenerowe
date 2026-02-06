@@ -7,13 +7,14 @@
 docker container run hello-world
 ```
 ![ss-01](ss-01.png)
+![ss-02](ss-02.png)
 
 ### Uruchomienie kontenera Ubuntu i instalacja narzędzi
 **Polecenie:**
 ```bash
 docker container run -it ubuntu sh -c "apt update && apt install -y curl && curl https://www.google.com"
 ```
-![ss-02](ss-02.png)
+![ss-03](ss-03.png)
 
 
 ### Wyświetlenie listy kontenerów
@@ -22,7 +23,7 @@ docker container run -it ubuntu sh -c "apt update && apt install -y curl && curl
 docker container ls -a
 ```
 
-![ss-03](ss-03.png)
+![ss-04](ss-04.png)
 
 
 ### Usunięcie niepotrzebnego kontenera
@@ -32,7 +33,7 @@ git clone https://github.com/dodocker container stop <ID_kontenera>
 docker container rm <ID_kontenera>
 ```
 
-![ss-04](ss-04.png)
+![ss-05](ss-05.png)
 
 ### Pobranie obrazu Ubuntu
 **Polecenie:**
@@ -40,7 +41,8 @@ docker container rm <ID_kontenera>
 docker image pull ubuntu
 ```
 
-![ss-05](ss-05.png)
+![ss-06](ss-06.png)
+
 
 ### Wyświetlenie listy obrazów
 
@@ -48,7 +50,6 @@ docker image pull ubuntu
 ```bash
 docker image ls
 ```
-![ss-06](ss-06.png)
 
 
 ![ss-07](ss-07.png)
