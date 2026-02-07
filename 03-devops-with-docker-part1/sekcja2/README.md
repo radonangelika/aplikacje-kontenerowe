@@ -5,10 +5,9 @@
 **Opis:**  
 Sprawdzenie poprawności instalacji Dockera poprzez uruchomienie obrazu testowego.
 
-**Polecenie:**
+```bash
 docker container run hello-world
-
-
+```
 ---
 ![ss-01](ss-01.png)
 
@@ -17,11 +16,11 @@ docker container run hello-world
 **Opis:**  
 Uruchomiono kontener z systemem Ubuntu i sprawdzono jego system plików.
 
-**Polecenie:**
+```bash
 docker run -it ubuntu
 ls /
 exit
-
+```
 
 ---
 ![ss-02](ss-02.png)
@@ -29,38 +28,31 @@ exit
 ## Uruchomienie kontenera działającego w tle – looper
 
 **Opis:**  
-Utworzono kontener o nazwie *looper*, który w nieskończonej pętli wypisuje aktualną datę.
+Utworzono kontener o nazwie *looper*, który w nieskończonej pętli wypisuje aktualną datę. Wyświetlono listę aktualnie uruchomionych kontenerów.
 
-**Polecenie:**
+
+```bash
 docker run -d -it --name looper ubuntu sh -c "while true; do date; sleep 1; done"
+docker container ls
 
+```
 
 ---
 ![ss-03](ss-03.png)
 
-## Sprawdzenie działających kontenerów
-
-**Opis:**  
-Wyświetlono listę aktualnie uruchomionych kontenerów.
-
-**Polecenie:**
-docker container ls
-
-
 ---
-![ss-04](ss-04.png)
 
 ## Podgląd logów kontenera
 
 **Opis:**  
 Wyświetlono strumień wyjścia programu działającego w kontenerze *looper*.
 
-**Polecenie:**
+```bash
 docker logs -f looper
-
-
+```
 ---
-![ss-05](ss-05.png)
+![ss-04](ss-04.png)
+
 
 ## Wstrzymanie i wznowienie kontenera
 
@@ -73,6 +65,7 @@ docker unpause looper
 
 
 ---
+![ss-05](ss-05.png)
 ![ss-06](ss-06.png)
 
 ## Dołączenie do działającego kontenera
@@ -80,72 +73,66 @@ docker unpause looper
 **Opis:**  
 Podłączono terminal do procesu uruchomionego w kontenerze.
 
-**Polecenie:**
+```bash
 docker attach looper
-
-
----
-![ss-07](ss-07.png)
-
-## Wyświetlenie wszystkich kontenerów
-
-**Opis:**  
-Sprawdzono również kontenery, które zakończyły działanie.
-
-**Polecenie:**
 docker ps -a
-
-
----
-![ss-08](ss-08.png)
-
-## Ponowne uruchomienie kontenera
-
-**Opis:**  
-Uruchomiono wcześniej zatrzymany kontener i ponownie podłączono się do jego wyjścia.
-
-**Polecenie:**
 docker start looper
 docker attach --no-stdin looper
 
+```
+---
+![ss-07](ss-07.png)
+
+##  Bez przerywania działania kontenera wykonano polecenie listujące pliki.
+
+```bash
+docker exec looper ls -la
+
+```
+---
+![ss-08](ss-08.png)
+
+##  Instalacja oprogramowania w Ubuntu. W nowym kontenerze zainstalowano edytor nano.
+
+```bash
+docker run -it ubuntu
+apt-get update
+apt-get install nano
+```
 
 ---
 ![ss-09](ss-09.png)
 
-##  Wykonanie polecenia w działającym kontenerze
+## Interaktywny skrypt pobierający stronę WWW
 
-**Opis:**  
-Bez przerywania działania kontenera wykonano polecenie listujące pliki.
-
-**Polecenie:**
-docker exec looper ls -la
-
+```bash
+docker run -it --name task2 ubuntu sh -c 'while true; do echo "Input website:"; read website; echo "Searching..."; sleep 1; curl http://$website; done'
+```
 
 ---
 ![ss-10](ss-10.png)
 
-##  Instalacja oprogramowania w Ubuntu
+## Uruchomienie gotowej aplikacji simple-web-service
 
-**Opis:**  
-W nowym kontenerze zainstalowano edytor nano.
-
-**Polecenie:**
-docker run -it ubuntu
-apt-get update
-apt-get install nano
-
+```bash
+docker run -d --name task devopsdockeruh/simple-web-service:ubuntu
+```
 
 ---
 ![ss-11](ss-11.png)
 
-## Interaktywny skrypt pobierający stronę WWW
+## Wejście do kontenera i odczyt logów aplikacji
 
-**Opis:**  
-Utworzono kontener proszący użytkownika o adres strony, a następnie pobierający jej zawartość.
-
-**Polecenie:**
-docker run -it --name task2 ubuntu sh -c 'while true; do echo "Input website:"; read website; echo "Searching..."; sleep 1; curl http://$website; done'
-
+```bash
+docker exec -it task bash
+tail -f ./text.log
+```
 
 ---
 ![ss-12](ss-12.png)
+**Wynik:**  
+W pliku cyklicznie pojawiał się komunikat:
+
+Secret message is: 'You can find the source code here: https://github.com/docker-hy'
+
+oraz znaczniki czasu generowane przez aplikację.
