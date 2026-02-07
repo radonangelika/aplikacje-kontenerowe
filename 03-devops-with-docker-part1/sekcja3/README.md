@@ -118,9 +118,3 @@ docker run web-server
 
 ---
 
-## Wnioski
-
-- Obrazy Docker mogą być budowane na różnych bazach (Ubuntu/Alpine), co wpływa głównie na rozmiar.  
-- Dockerfile pozwala w powtarzalny sposób tworzyć własne obrazy.  
-- CMD umożliwia definiowanie domyślnego zachowania kontenera.  
-- Kontenery pozwalają uruchamiać aplikacje bez instalacji zależności w systemie hosta.
