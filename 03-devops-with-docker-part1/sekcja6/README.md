@@ -1,4 +1,4 @@
-# Laboratorium – Konteneryzacja aplikacji
+# section 6
 
 W ramach laboratorium wykonano konteneryzację trzech projektów:
 - aplikacji Ruby on Rails  
