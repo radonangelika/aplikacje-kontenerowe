@@ -84,31 +84,43 @@ Sieci
 
 ## 6. Opis zrzutów ekranu
 
-### 01.png – docker compose ps
+### docker compose ps
+![01](./screenshots/01.png)
+
 Widoczna lista uruchomionych kontenerów:  
 - app-web  
 - app-api  
 - app-db  
 Widać mapowanie portu 8080→80 oraz że wszystkie usługi mają status „Up”.
 
-### 02.png – aplikacja w przeglądarce
+###  aplikacja w przeglądarce
+![02](./screenshots/02.png)
+
 Interfejs React z wykresem Chart.js, statusem API, licznikiem visits oraz podglądem odpowiedzi z endpointów.
 
-### 03.png – test API (curl)
+### test API (curl)
 Wywołanie:
 - /api/health  
 - /api/db  
-- /api/visits  
+- /api/visits 
+![03](./screenshots/03.png)
+
 Potwierdza poprawną komunikację frontend → nginx → api → db.
 
-### 04.png – docker logs
+### docker logs
+![04](./screenshots/04.png)
+
 Logi kontenera app-api pokazujące zapytania HTTP do endpointów.
 
-### 05.png – docker inspect
+### docker inspect
+![05](./screenshots/05.png)
+
 Fragment konfiguracji sieci:  
 kontener app-web posiada adres w sieci `appnet`, widoczna wewnętrzna komunikacja Dockera.
 
-### 06.png – trwałość wolumenu
+### trwałość wolumenu
+![06](./screenshots/06.png)
+
 Procedura:
 1. sprawdzenie visits  
 2. docker compose down  
@@ -116,21 +128,29 @@ Procedura:
 4. visits pozostaje bez zmian  
 → dowód działania wolumenu PostgreSQL.
 
-### 07.png – ENTRYPOINT i CMD
+###  ENTRYPOINT i CMD
+![07](./screenshots/07.png)
+
 Fragment docker-compose.yml:  
 - ENTRYPOINT: wait-for-it.sh (oczekiwanie na db)  
 - CMD: python app.py (właściwa aplikacja).
 
-### 08.png – docker cp
+###  docker cp
+![08](./screenshots/08.png)
+
 Skopiowanie pliku z kontenera na host:  
 docker cp app-api:/app/app.py .
 
-### 09.png – DockerHub
+### DockerHub
+![09](./screenshots/09.png)
+
 Push i pull obrazu:  
 angelikaradon/aplikacja25084-api:1.0  
 → dowód publikacji w repozytorium.
 
-### 10.png – wejście do kontenera (dodatkowe)
+###  wejście do kontenera 
+![10](./screenshots/10.png)
+
 docker exec -it app-web sh  
 Potwierdzenie dostępu do systemu plików kontenera.
 
