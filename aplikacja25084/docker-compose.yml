@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: app-db
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppass
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+  api:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: app-api
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: appdb
+      DB_USER: appuser
+      DB_PASS: apppass
+    depends_on:
+      - db
+    networks:
+      - appnet
+    entrypoint: ["/app/wait-for-it.sh", "db", "5432", "--"]
+    command: ["python", "app.py"]
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: app-web
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+    networks:
+      - appnet
+
+volumes:
+  db_data:
+
+networks:
+  appnet:
